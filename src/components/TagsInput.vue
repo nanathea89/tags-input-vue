@@ -55,19 +55,23 @@ export default{
                  
                     this.tags.push(this.newTag.trim())
                     this.newTag=''
+                    this.$emit('change',this.tags)
             
             }
         },
         removeTag(index){
             this.tags.splice(index,1)
+            this.$emit('change',this.tags)
         },
         removeLastTag(index){
             if(this.newTag.length === 0){
                 this.removeTag(this.tags.length -1)
+                this.$emit('change',$this.tags)
             }
         }
 
-    }
+    },
+    emits:['change']
 }
 </script>
 <style scoped>

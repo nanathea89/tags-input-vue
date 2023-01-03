@@ -4,7 +4,13 @@ export default{
   // components: { TagsInput },
   data(){
     return{
-      listTags:['Vue','React','Angular:']
+      listTags:['Vue','React','Angular:'],
+      items:[],
+    }
+  },
+  methods:{
+    handleChange(tags){
+      this.listTags=[...tags]
     }
   }
   
@@ -16,8 +22,10 @@ export default{
   <div>
    <h1>Hello</h1>
    {{ listTags }}
-   <tags-input :selectedTags="listTags"></tags-input>
-   <tags-input :selectedTags="listTags"></tags-input>
+   <hr/>
+   {{ items }}
+   <tags-input :selectedTags="listTags" @change="handleChange"></tags-input>
+   <tags-input :selectedTags="items" @change="items=[...$event]"></tags-input>
    <hr/>
     
   </div>
